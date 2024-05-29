@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- nav bar -->
+	<div class="container">
+		<div class="navbar">
+			<nav>
+				<ul>
+					<li><a th:href="@{/add/emp}">Add Employee </a></li>
+					
+					
+					
+					<li><a th:href="@{/existingemp}">Display Employee</a></li>
+				</ul>
+			</nav>
+		</div>
+
+	</div>
+<table>
+
+<thead>
+<th>Id</th>
+<th> FirstName</th>
+<th>lastName</th>
+<th>Department</th>
+<th>Email</th>
+<th>Action</th>
+</thead>
+<tbody>
+<tr th:each="employee : ${employees}">
+	<td th:text="${employee.id}">Id</td>
+	<td th:text="${employee.firstname}">firstname</td>
+	<td th:text="${employee.lastname}">lastname</td>
+	<td th:text="${employee.department}">department</td>
+	<td th:text="${employee.email}">Email</td>
+	<td>
+	<form th:action="@{/emp/delete}" method="post"> 
+	<input type="hidden" name="id" th:value="${employee.id}">
+	<button type="submit">Delete</button>
+	</form>
+	
+	</td>
+		<td>
+	<form th:action="@{/emp/update}" method="get"> 
+	<input type="hidden" name="id" th:value="${employee.id}">
+	<button type="submit">Update</button>
+	</form>
+	
+	</td>
+
+	
+	
+</tr>
+</tbody>
+</table>
+
+
+</body>
+</html>

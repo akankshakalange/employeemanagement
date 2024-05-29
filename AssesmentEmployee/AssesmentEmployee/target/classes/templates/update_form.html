@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div> 
+<h1>Add New Employee</h1>
+<form th:action="@{/emp/edit}" method="post" th:object="${employee}" enctype="multipart/form-data">
+<input type="hidden" th:value="${employee.id}" name="id" th:field="*{id}">
+<label for="firstname">Enter Firstname</label>
+<input type="text" name="firstname" th:field="*{firstname}" placeholder="Enter firstname"><br>
+<span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></span>
+
+<label for="lastname">Enter Lastname</label>
+<input type="text" name="lastname" th:field="*{lastname}" placeholder="Enter lastname"><br>
+<span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></span>
+
+
+<label for="email">Enter Email</label>
+<input type="email" name="email" th:field="*{email}" placeholder="Enter email"><br>
+<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
+
+<label for="department">Enter Department</label>
+<input type="text" name="department" th:field="*{department}" placeholder="Enter department"><br>
+<span th:if="${#fields.hasErrors('department')}" th:errors="*{department}"></span>
+
+
+
+
+
+
+<input type="submit">
+
+</form>
+</div>
+<div th:if="${msg}" th:text="${msg}"></div>
+</body>
+</html>
